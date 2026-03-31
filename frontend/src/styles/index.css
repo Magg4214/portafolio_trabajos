@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS base enhancements */
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl shadow-glass border border-white/40;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-2xl px-6 py-2.5 font-bold shadow-soft transition-all active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-pastel-purple/20 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-pastel-purple to-pastel-pink text-gray-800 shadow-elevated hover:shadow-glow hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply bg-gray-100/50 hover:bg-white text-gray-700 hover:shadow-sm;
+  }
+
+  .input {
+    @apply w-full rounded-2xl border border-gray-100 bg-gray-50/50 px-5 py-3 outline-none transition-all focus:bg-white focus:ring-4 focus:ring-pastel-purple/10 focus:border-pastel-purple/30;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 rounded-full hover:bg-gray-300 transition-colors;
+}
+
+/* Explicit utilities for custom shadows so they can be used in @apply */
+@layer utilities {
+  .shadow-soft { box-shadow: theme(boxShadow.soft); }
+  .shadow-glass { box-shadow: theme(boxShadow.glass); }
+  .shadow-elevated { box-shadow: theme(boxShadow.elevated); }
+  .shadow-glow { box-shadow: theme(boxShadow.glow); }
+}
